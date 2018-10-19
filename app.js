@@ -5,6 +5,11 @@ let fileName = ''
 
 const [exe, js, ...args] = process.argv;
 
+if (!args.length) {
+  console.log('请输入文件名')
+  return
+}
+
 fileName = args[0]
 
 
