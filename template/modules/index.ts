@@ -3,7 +3,6 @@ import {
 } from './servers'
 
 export default {
-  // TODO: 改名
   namespace: "_MODULE_NAME_",
   state: {
     mobile: '13221033190',

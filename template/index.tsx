@@ -24,12 +24,11 @@ type PageState = {
 }
 
 
-// TODO: 改名
+
 @connect(({ _MODULE_NAME_ }) => ({
   ..._MODULE_NAME_,
 }))
-// TODO: 改名
-class _PAGE_NAME_ extends Component<PageProps, PageState> {
+class Index extends Component<PageProps, PageState> {
 
   state: PageState = {
 
@@ -37,7 +36,7 @@ class _PAGE_NAME_ extends Component<PageProps, PageState> {
 
   render () {
     return (
-      // TODO: 改名
+
       <View className="page--_PAGE_NAME_">
 
       </View>
@@ -45,4 +44,4 @@ class _PAGE_NAME_ extends Component<PageProps, PageState> {
   }
 }
 
-export default _PAGE_NAME_
+export default Index

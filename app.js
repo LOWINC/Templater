@@ -15,33 +15,53 @@ if (!moduleName) {
 }
 
 
+const pathBase = `${__dirname}/src/pages/${pageName}`
 
 const template = [
   {
     name: 'html',
     entry: './template/index.tsx',
-    open: `${__dirname}/src/pages/${pageName}`,
-    output: `${__dirname}/src/pages/${pageName}/index.tsx`,
+    open: `${pathBase}`,
+    output: `${pathBase}/index.tsx`,
   },
   {
     name: 'less',
     entry: './template/index.less',
-    open: `${__dirname}/src/pages/${pageName}`,
-    output: `${__dirname}/src/pages/${pageName}/index.less`,
+    open: `${pathBase}`,
+    output: `${pathBase}/index.less`,
   },
   {
     name: 'dva',
     entry: './template/modules/index.ts',
-    open: `${__dirname}/src/pages/${pageName}/dva`,
-    output: `${__dirname}/src/pages/${pageName}/dva/index.ts`,
+    open: `${pathBase}/dva`,
+    output: `${pathBase}/dva/index.ts`,
   },
   {
     name: 'fetch',
     entry: './template/modules/servers.ts',
-    open: `${__dirname}/src/pages/${pageName}/dva`,
-    output: `${__dirname}/src/pages/${pageName}/dva/servers.ts`,
+    open: `${pathBase}/dva`,
+    output: `${pathBase}/dva/servers.ts`,
   },
 ]
+
+
+function isFileExists () {
+  return new Promise(function (resolve, reject) {
+    fs.exists(pathBase, (exists) => {
+      if (exists) {
+        console.log('文件已经存在,请尝试其他pageName！')
+        return reject(exists)
+      } else {
+        return resolve(exists)
+      }
+    });
+  })
+}
+
+
+
+
+
 
 
 function getTemplate (item) {
@@ -92,16 +112,30 @@ function writeFile ({ info, open, output }) {
   })
 }
 
-
-template.map(async (item) => {
+(async () => {
   try {
-    const fileInfo = await getTemplate(item)
-    writeFile({
-      info: fileInfo,
-      open: item.open,
-      output: item.output
+    await isFileExists()
+
+    template.map(async (item) => {
+      try {
+        const fileInfo = await getTemplate(item)
+        writeFile({
+          info: fileInfo,
+          open: item.open,
+          output: item.output
+        })
+      } catch (error) {
+        console.log(error)
+      }
     })
+
   } catch (error) {
     console.log(error)
   }
-})
+})()
+
+
+
+
+
+
