@@ -4,7 +4,7 @@ import {
 
 export default {
   // TODO: 改名
-  namespace: "MODULE_NAME",
+  namespace: "_MODULE_NAME_",
   state: {
     mobile: '13221033190',
     info: ""

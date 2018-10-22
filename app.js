@@ -1,42 +1,45 @@
 const fs = require('fs')
 const mkdirp = require('mkdirp')
 
-let fileName = ''
 
-const [exe, js, ...args] = process.argv;
+const [exe, js, pageName, moduleName] = process.argv;
 
-if (!args.length) {
-  console.log('请输入文件名')
+if (!pageName) {
+  console.log('请输入页面文件名')
   return
 }
 
-fileName = args[0]
+if (!moduleName) {
+  console.log('请输入dva模块名')
+  return
+}
+
 
 
 const template = [
   {
     name: 'html',
     entry: './template/index.tsx',
-    open: `${__dirname}/src/pages/${fileName}`,
-    output: `${__dirname}/src/pages/${fileName}/index.tsx`,
+    open: `${__dirname}/src/pages/${pageName}`,
+    output: `${__dirname}/src/pages/${pageName}/index.tsx`,
   },
   {
     name: 'less',
     entry: './template/index.less',
-    open: `${__dirname}/src/pages/${fileName}`,
-    output: `${__dirname}/src/pages/${fileName}/index.less`,
+    open: `${__dirname}/src/pages/${pageName}`,
+    output: `${__dirname}/src/pages/${pageName}/index.less`,
   },
   {
     name: 'dva',
     entry: './template/modules/index.ts',
-    open: `${__dirname}/src/pages/${fileName}/dva`,
-    output: `${__dirname}/src/pages/${fileName}/dva/index.ts`,
+    open: `${__dirname}/src/pages/${pageName}/dva`,
+    output: `${__dirname}/src/pages/${pageName}/dva/index.ts`,
   },
   {
     name: 'fetch',
     entry: './template/modules/servers.ts',
-    open: `${__dirname}/src/pages/${fileName}/dva`,
-    output: `${__dirname}/src/pages/${fileName}/dva/servers.ts`,
+    open: `${__dirname}/src/pages/${pageName}/dva`,
+    output: `${__dirname}/src/pages/${pageName}/dva/servers.ts`,
   },
 ]
 
@@ -52,7 +55,10 @@ function getTemplate (item) {
         return
       }
       console.log('文件读取成功:', item.entry)
-      resolve(data.toString())
+      resolve(data.toString()
+        .replace(/_PAGE_NAME_/g, pageName)
+        .replace(/_MODULE_NAME_/g, moduleName)
+      )
     })
   })
 
