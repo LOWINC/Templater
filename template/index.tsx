@@ -6,37 +6,25 @@ import { connect } from '@tarojs/redux';
 import './index.less'
 
 
-type StateProps = {
-
-}
-
-type EventProps = {
-
-}
-
-
-type PageProps = StateProps & EventProps
-
-
-
-type PageState = {
-
+interface IProps {
+  dispatch: ({ type: string, payload: any }) => void
+  loading: {
+    models: {
+      _MODULE_NAME_: boolean
+    }
+  },
 }
 
 
 
-@connect(({ _MODULE_NAME_ }) => ({
-  ..._MODULE_NAME_,
+@connect<any>(({ loading, _MODULE_NAME_ }) => ({
+  ...loading, _MODULE_NAME_
 }))
-class Index extends Component<PageProps, PageState> {
+class Index extends Component<IProps> {
 
-  state: PageState = {
-
-  }
 
   render () {
     return (
-
       <View className="page--_PAGE_NAME_">
 
       </View>
