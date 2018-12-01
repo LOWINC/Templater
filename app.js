@@ -32,15 +32,9 @@ const template = [
   },
   {
     name: 'dva',
-    entry: './template/modules/index.ts',
-    open: `${pathBase}/dva`,
-    output: `${pathBase}/dva/index.ts`,
-  },
-  {
-    name: 'fetch',
-    entry: './template/modules/servers.ts',
-    open: `${pathBase}/dva`,
-    output: `${pathBase}/dva/servers.ts`,
+    entry: './template/index.ts',
+    open: `${__dirname}/src/store/modules/`,
+    output: `${__dirname}/src/store/modules/${moduleName}.ts`,
   },
 ]
 
