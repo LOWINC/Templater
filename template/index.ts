@@ -1,3 +1,5 @@
+import Taro from "@tarojs/taro";
+
 const INIT_STATE = {
 
 }
@@ -6,11 +8,6 @@ export default {
   namespace: "_MODULE_NAME_",
   state: {
     ...INIT_STATE
-  },
-  effects: {
-    // * getDataById ({ payload: { id } }, { put, call, select, take }) {
-
-    // }
   },
   reducers: {
     save (state, { payload }) {
@@ -25,6 +22,11 @@ export default {
         INIT_STATE
       }
     }
+  },
+  effects: {
+    // * getDataById ({ payload: { id } }, { put, call, select, take }) {
+
+    // }
   },
   subscriptions: {
     // setup ({ dispatch, history }) {
