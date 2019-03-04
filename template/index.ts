@@ -1,4 +1,5 @@
-import Taro from "@tarojs/taro";
+// import GoodsApi from 'scrat-apis-person-interest/GoodsApi'
+
 
 const INIT_STATE = {
 
@@ -19,13 +20,34 @@ export default {
     initState (state) {
       return {
         ...state,
-        INIT_STATE
+        ...INIT_STATE
       }
     }
   },
   effects: {
-    // * getDataById ({ payload: { id } }, { put, call, select, take }) {
-
+    // 基本信息
+    // * getBaseData ({ payload: { id } }, { put, call }) {
+    //   const res = yield call(GoodsApi.getById, id)
+    //   yield put({
+    //     type: 'save',
+    //     payload: {
+    //       goodsInfo: res,
+    //     }
+    //   })
+    // },
+    // // 给予基本信息的额外信息
+    // * getExtraData ({ payload: { id } }, { take, select, call, put }) {
+    //   yield take("getProduct/@@end")
+    //   const goodsInfo = yield select(s => s._MODULE_NAME_)
+    //   if (goodsInfo.type === 'REAL') {
+    //     const res = yield call(GoodsApi.getSkuGroupList, id)
+    //     yield put({
+    //       type: 'save',
+    //       payload: {
+    //         skuInfo: res,
+    //       }
+    //     })
+    //   }
     // }
   },
   subscriptions: {
