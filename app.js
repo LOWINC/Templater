@@ -26,9 +26,9 @@ const template = [
   },
   {
     name: 'less',
-    entry: './template/index.less',
+    entry: './template/index.module.less',
     open: `${pathBase}`,
-    output: `${pathBase}/index.less`,
+    output: `${pathBase}/index.module.less`,
   },
   {
     name: 'dva',
