@@ -2,6 +2,8 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { connect } from '@tarojs/redux';
 
+import Loading from '@/components/loading'
+
 import style from './index.module.less'
 
 
@@ -33,18 +35,22 @@ class Index extends Component<IProps> {
   }
 
   componentWillUnmount = () => {
-    // this.props.dispatch({
-    //   type: "_MODULE_NAME_/initState",
-    //   payload: {}
-    // })
+    this.props.dispatch({
+      type: "_MODULE_NAME_/initState",
+      payload: {}
+    })
   }
 
 
 
   render () {
+    const isLoading = this.props.loading.models._MODULE_NAME_
     return (
-      <View className={style['page']}>
+      <View className={style['page--wrapper']}>
+        {isLoading && <Loading />}
+        <View className={style['page']}>
 
+        </View>
       </View>
     )
   }

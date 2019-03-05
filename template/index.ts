@@ -25,7 +25,23 @@ export default {
     }
   },
   effects: {
-    // 基本信息
+    // // DESC: 或者使用put.resolve
+    // * getData ({ payload: { id } }, { put }) {
+    //   yield put({
+    //     type: "getBaseData",
+    //     payload: {
+    //       id
+    //     }
+    //   })
+
+    //   yield put({
+    //     type: "getExtraData",
+    //     payload: {
+    //       id
+    //     }
+    //   })
+    // },
+    // // 基本信息
     // * getBaseData ({ payload: { id } }, { put, call }) {
     //   const res = yield call(GoodsApi.getById, id)
     //   yield put({
@@ -48,25 +64,6 @@ export default {
     //       }
     //     })
     //   }
-    // }
+    // },
   },
-  subscriptions: {
-    // setup ({ dispatch, history }) {
-    // return history.listen(({ pathname, query }) => {
-    // if (pathname === '/_PAGE_NAME_') {
-    //   dispatch({
-    //     type: 'getDataById',
-    //     payload: {
-    //       id: query.id
-    //     }
-    //   })
-    // } else {
-    //   dispatch({
-    //     type: "initState",
-    //     payload: {}
-    //   })
-    // }
-    // })
-    // }
-  }
 }
