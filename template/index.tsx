@@ -23,7 +23,7 @@ interface IProps {
 
 
 @connect<any>(({ loading, _MODULE_NAME_ }) => ({
-  ...loading, _MODULE_NAME_
+  loading, _MODULE_NAME_
 }))
 class Index extends Component<IProps> {
 

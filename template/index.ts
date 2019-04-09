@@ -19,7 +19,12 @@ export default {
         ...state,
         ...INIT_STATE
       }
-    }
+    },
+    // DESC: immerPlugin
+    // https://github.com/dvajs/dva/tree/master/packages/dva-immer
+    // updateStatus (state, { payload: { status } }) {
+    //   state.status = status
+    // }
   },
   effects: {
     * getData ({ payload: { id } }, { put }) {
