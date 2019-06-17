@@ -69,6 +69,32 @@ export default {
           store.user = user
         }
       })
-    }
+    },
+    * someEffects ({ }, { put }) {
+      // ajax
+      yield put({
+        type: "immer",
+        payload: state => {
+          state.someData = {
+            isVip: true
+          }
+        }
+      })
+    },
+    watchSomeEffects: [
+      function* ({ take, put, select }) {
+        while (true) {
+          yield take('someEffects/@@end')
+          const { someData: { isVip } } = yield select(s => s._MODULE_NAME_)
+
+          if (!isVip) {
+            // doSth
+            return
+          }
+          // doSth
+        }
+      },
+      { type: 'watcher' }
+    ],
   },
 }
