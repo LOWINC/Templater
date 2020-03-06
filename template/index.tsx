@@ -1,57 +1,33 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { connect } from '@tarojs/redux';
-import get from 'lodash/get'
+import {View} from "@tarojs/components";
+import Taro, {useDidShow, useRouter} from "@tarojs/taro";
+import classNames from "classnames/bind";
+import style from "./index.module.less";
 
-import Loading from '@/components/loading'
+const cx = classNames.bind(style);
 
-import classNames from 'classnames/bind'
-import style from './index.module.less'
-
-const cx = classNames.bind(style)
-
-interface IProps {
-  dispatch: ({ type: string, payload: any }) => Promise<any>
-  _MODULE_NAME_: any
-  loading: {
-    models: {
-      _MODULE_NAME_: boolean
-    }
-  },
+function mapStateToProps(store) {
+  return {
+    _MODULE_NAME_: store._MODULE_NAME_,
+    loading: store.loading.models._MODULE_NAME_
+  };
 }
 
-
-
-@connect<any>(({ loading, _MODULE_NAME_ }) => ({
-  loading, _MODULE_NAME_
-}))
-class Index extends Component<IProps> {
-
-
-  componentDidMount = () => {
-
-  }
-
-  componentWillUnmount = () => {
-    this.props.dispatch({
-      type: "_MODULE_NAME_/initState",
-      payload: {}
-    })
-  }
-
-
-
-  render () {
-    const isLoading = this.props.loading.models._MODULE_NAME_
-    return (
-      <View className={cx('page')}>
-        {isLoading && <Loading />}
-        <View className={cx('container')}>
-
-        </View>
-      </View>
-    )
-  }
+interface Dispatch {
+  dispatch: ({type: string, payload: any}) => Promise<any>;
 }
 
-export default Index
+type IProps = ReturnType<typeof mapStateToProps> | Dispatch;
+
+export default function Page(props: IProps) {
+  const router = useRouter();
+
+  useDidShow(() => {
+    console.log(router.params.id);
+    Taro.showToast({
+      title: "id:" + router.params.id,
+      icon: "none"
+    });
+  });
+
+  return <View classNames={cx("page")}> 123 </View>;
+}
