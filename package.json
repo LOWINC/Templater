@@ -4,7 +4,7 @@
   "description": "nodejs tools",
   "main": "./app.js",
   "bin": {
-    "lowinccreatefile": "./app.js"
+    "lowincCreatefile": "./app.js"
   },
   "author": "",
   "license": "ISC",

@@ -9,7 +9,7 @@ const [exe, js, pageName, moduleName] = process.argv;
 
 const pathBase = path.resolve(`${__dirname}/src/pages/${pageName}`);
 const pathOut = process.cwd();
-const pathReal = `${pathOut}/src/${pageName}`;
+const pathReal = `${pathOut}/src/pages/${pageName}`;
 
 if (!pageName) {
   console.log("请输入页面文件名");
