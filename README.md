@@ -6,6 +6,28 @@
 
 > yarn global add @lowinc/createfile
 
+### 配置
+
+根目录下
+
+> templater.json
+
+```json
+{
+  "view": "src/pages",
+  "store": "src/store"
+}
+```
+
+```ts
+  view: '页面路径';
+  store: 'store路径';
+  template?: {
+    view?: '自定义页面路径';
+    store?: '自定义store路径';
+  };
+```
+
 ### 使用
 
 默认生成页面
