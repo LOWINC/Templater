@@ -1,6 +1,6 @@
 {
   "name": "@lowinc/createfile",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "nodejs tools",
   "main": "./app.js",
   "bin": {
