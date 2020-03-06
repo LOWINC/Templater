@@ -2,7 +2,11 @@
 
 骨架初始化工具
 
-> lowinccreatefile yourPageName  yourModuleName
+### install
+> yarn global add @lowinc/createfile
+
+### usage
+> lowincCreatefile yourPageName  yourModuleName
 
 
 
