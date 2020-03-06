@@ -1,4 +1,5 @@
 import {View} from "@tarojs/components";
+import {connect} from "@tarojs/redux";
 import Taro, {useDidShow, useRouter} from "@tarojs/taro";
 import classNames from "classnames/bind";
 import style from "./index.module.less";
@@ -18,7 +19,7 @@ interface Dispatch {
 
 type IProps = ReturnType<typeof mapStateToProps> | Dispatch;
 
-export default function Page(props: IProps) {
+function Page(props: IProps) {
   const router = useRouter();
 
   useDidShow(() => {
@@ -31,3 +32,5 @@ export default function Page(props: IProps) {
 
   return <View classNames={cx("page")}> 123 </View>;
 }
+
+export default connect(mapStateToProps)(Page as any);
