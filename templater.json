@@ -1,0 +1,4 @@
+{
+  "view": "src/pages",
+  "store": "src/store"
+}
