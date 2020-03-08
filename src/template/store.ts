@@ -1,4 +1,3 @@
-export const storeText = `
 const INIT_STATE = {};
 
 export type T_MODULE_NAME_ = typeof INIT_STATE;
@@ -74,6 +73,3 @@ export default {
     // ]
   }
 };
-
-
-`;

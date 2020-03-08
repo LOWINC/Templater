@@ -10,6 +10,10 @@
   "bin": {
     "lowincCreatefile": "./dist/app.js"
   },
+  "scripts": {
+    "copy": "node copy.js",
+    "build": "tsc && npm run copy"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

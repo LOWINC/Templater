@@ -17,17 +17,13 @@
 ```json
 {
   "view": "src/pages",
-  "store": "src/store"
+  "store": "src/store",
+  // 可选
+  "template": {
+    "view": "template/index.tsx",
+    "store": "template/index.ts"
+  }
 }
-```
-
-```ts
-  view: '页面路径';
-  store: 'store路径';
-  template?: {
-    view?: '自定义页面路径';
-    store?: '自定义store路径';
-  };
 ```
 
 ### 使用
@@ -39,13 +35,3 @@
 加上第二个参数 store 生成 store
 
 > lowincCreatefile storeName store
-
-### TODO
-
-1. 报错
-
-直接通过文件生成会报错,暂时使用字符包代替
-
-需要修改 src/utils/template.ts , src/template/view.ts, src/template/store.ts
-
-> because it would be overwritten by multiple input files.

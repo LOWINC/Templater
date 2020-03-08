@@ -1,11 +1,8 @@
-import mkdirp from "mkdirp";
-import { config } from "./config";
 import fs from "fs-extra";
-import { argv, Argv } from "./arg";
+import mkdirp from "mkdirp";
+import { Argv } from "./arg";
+import { config } from "./config";
 import { getTemplateReadPath } from "./template";
-
-import { storeText } from "../template/store";
-import { viewText } from "../template/view";
 
 export const readFile = async (path: string, name?: string) => {
   const buffer = await fs.readFile(path);
@@ -16,7 +13,7 @@ export const readFile = async (path: string, name?: string) => {
   return fakeCode.replace(/_PAGE_NAME_|_MODULE_NAME_/g, name);
 };
 
-export const writeFile = async (name: string, type: Argv["type"]) => {
+export const writeFile = async (name: string, type: Argv["type"] = "view") => {
   if (!name) {
     console.log("请输入模块名");
     return;
@@ -24,15 +21,26 @@ export const writeFile = async (name: string, type: Argv["type"]) => {
 
   const { view, store } = getTemplateReadPath();
 
-  if (!type || type === "view") {
-    const fakeCode = view ? await readFile(view, name) : viewText;
-    await mkdirp(config.view);
-    fs.writeFile(`${config.view}/${name}.tsx`, fakeCode);
-  }
+  type NewFile = {
+    code: string;
+    path: string;
+    file: string;
+  };
 
-  if (type === "store") {
-    const fakeCode = store ? await readFile(store, name) : storeText;
-    await mkdirp(config.store);
-    fs.writeFile(`${config.store}/${name}.ts`, fakeCode);
-  }
+  const fileMap: Record<Argv["type"], NewFile> = {
+    view: {
+      code: await readFile(view, name),
+      path: config.view,
+      file: `${config.view}/${name}.tsx`
+    },
+    store: {
+      code: await readFile(store, name),
+      path: config.store,
+      file: `${config.store}/${name}.tsx`
+    }
+  };
+
+  const pointFile = fileMap[type];
+  await mkdirp(pointFile.path);
+  fs.writeFile(pointFile.file, pointFile.code);
 };

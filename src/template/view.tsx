@@ -1,5 +1,3 @@
-export const viewText = `
-
 import { View } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import Taro, { useDidShow, useRouter } from "@tarojs/taro";
@@ -36,5 +34,3 @@ function Page(props: IProps) {
 }
 
 export default connect(mapStateToProps)(Page as any);
-
-`;
