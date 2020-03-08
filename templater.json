@@ -1,4 +1,8 @@
 {
   "view": "src/pages",
-  "store": "src/store"
+  "store": "src/store",
+  "template": {
+    "view": "template/view.tsx",
+    "store": "template/store.ts"
+  }
 }

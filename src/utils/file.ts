@@ -13,13 +13,23 @@ export const readFile = async (path: string, name?: string) => {
   return fakeCode.replace(/_PAGE_NAME_|_MODULE_NAME_/g, name);
 };
 
-export const writeFile = async (name: string, type: Argv["type"] = "view") => {
+export const writeFile = async (
+  template: {
+    view: string;
+    store: string;
+  },
+  params: {
+    name: string;
+    type: Argv["type"];
+  }
+) => {
+  const { view, store } = template;
+  const { name, type } = params;
+
   if (!name) {
     console.log("请输入模块名");
     return;
   }
-
-  const { view, store } = getTemplateReadPath();
 
   type NewFile = {
     code: string;
@@ -36,7 +46,7 @@ export const writeFile = async (name: string, type: Argv["type"] = "view") => {
     store: {
       code: await readFile(store, name),
       path: config.store,
-      file: `${config.store}/${name}.tsx`
+      file: `${config.store}/${name}.ts`
     }
   };
 

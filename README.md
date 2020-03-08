@@ -18,10 +18,10 @@
 {
   "view": "src/pages",
   "store": "src/store",
-  // 可选
+  //   可选 自定义模板
   "template": {
-    "view": "template/index.tsx",
-    "store": "template/index.ts"
+    "view": "template/view.tsx",
+    "store": "template/store.ts"
   }
 }
 ```

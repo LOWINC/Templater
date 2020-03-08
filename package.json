@@ -17,17 +17,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/es6-promisify": "^6.0.0",
-    "@types/fs-extra": "^8.1.0",
-    "@types/lodash": "^4.14.149",
-    "@types/mkdirp": "^1.0.0",
-    "es6-promisify": "^6.0.2",
-    "fs": "^0.0.1-security",
     "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",
     "mkdirp": "^1.0.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/fs-extra": "^8.1.0",
+    "@types/lodash": "^4.14.149",
+    "@types/mkdirp": "^1.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git@gitee.com:olddriverqige/Templater.git"
